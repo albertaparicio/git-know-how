@@ -1,5 +1,5 @@
 #include <stdio.h>
 
 void main(){
-	printf("I'm in GitHub! Yay!\n");
+	printf("I'm in GitHub with SSH! Yay!\n");
 }
