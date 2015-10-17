@@ -76,12 +76,40 @@ The HTTPS method is the most simple to set up. It just asks for your server user
 
 The SSH method requires a slightly more complex setup, but when pushing and pulling data, there is no user or pass to be input. It is not always available, as your connection may have blocked port 22. (Not usual in domestic connections)
 
-#### Setting up an SSH connection
+#### Setting up an SSH remote URL for your connection
 
 1. First of all, the local repository must have an SSH remote direction set up.
-    To obtain your project's SSH direction, check its main page, select the SSH option and copy it:
+    To obtain your project's SSH direction, check its main page, select the SSH option and copy it. Below there a screenshot of the Linux kernel's GitHub page, with the SSH URL location shown:
     
     ![Linux GitHub SSH URL location](https://raw.githubusercontent.com/albertaparicio/first-project/master/linux_repo_SSH.png "Linux kernel's GitHub page SSH URL")
 
+2. Add the SSH URL to your local repository:
+        `git remote add [shortname] [url]`. When setting this URL for the first time, the `[shortname]` field is `origin`.
 
-how to create and upload an SSH key 
+#### Set up an SSH key
+
+An SSH key is the way the remote server has for checking the uploader's identity. To do so, first you have to link an SSH key of your computer/s with your remote server's account.
+
+If you do not have one, you must first create an SSH key. Here are the steps:
+
+1. First, check if your computer already has an SSH key:
+        `cat ~/.ssh/id_rsa.pub`
+        If you see a long string starting with ssh-rsa or ssh-dsa, you can skip the ssh-keygen step.
+2. Generate a new SSH key:
+        `ssh-keygen -t rsa -C "your@email.direction"`
+        This command will prompt you for a location and filename to store the key pair and for a password. When prompted for the location and filename, you can press enter to use the default.
+
+        Use the command below to show your public key:
+        `cat ~/.ssh/id_rsa.pub` (the location of the key may vary if you chose a different one from the default)
+3. Copy the SSH in the "SSH Keys" section of your profile's settings page. To copy the key to the clipboard, there is a differend command for every OS:
+    - GNU/Linux (requires xclip):
+    
+        `xclip -sel clip < ~/.ssh/id_rsa.pub`
+    - Mac OS:
+    
+        `pbcopy < ~/.ssh/id_rsa.pub`
+    - Windows:
+    
+        `clip < ~/.ssh/id_rsa.pub`
+
+4. The first time you connect to the server via SSH, you will be asked for the key's password. Enter it and after that, you will no longer need to input any credentials for your connections with the remote server.
