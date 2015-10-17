@@ -81,7 +81,7 @@ The SSH method requires a slightly more complex setup, but when pushing and pull
 1. First of all, the local repository must have an SSH remote direction set up.
     To obtain your project's SSH direction, check its main page, select the SSH option and copy it:
     
-    ![Alt text](/path/to/img.jpg "Optional title")
+    ![Linux GitHub SSH URL location](https://raw.githubusercontent.com/albertaparicio/first-project/master/linux_repo_SSH.png "Linux kernel's GitHub page SSH URL")
 
 
 how to create and upload an SSH key 
