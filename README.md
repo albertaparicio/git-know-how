@@ -101,7 +101,7 @@ If you do not have one, you must first create an SSH key. Here are the steps:
 
         `cat ~/.ssh/id_rsa.pub`
 
-3. Copy the SSH in the "SSH Keys" section of your profile's settings page. To copy the key to the clipboard, there is a differend command for every OS:
+3. Copy the SSH into the "SSH Keys" section of your profile's settings page. To copy the key to the clipboard, there is a differend command for every OS:
     - GNU/Linux (requires xclip):
     
         `xclip -sel clip < ~/.ssh/id_rsa.pub`
