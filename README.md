@@ -1,8 +1,14 @@
-This is a Git test repo
+# Git KnowHow
 
-Albert
+## Git initial setup
 
-test@test.test
+### Setup username and e-mail
 
-New username!!
+To set your username and e-mail up, run these two commands in the Terminal, 
+inside the project's folder:
 
+`git config --global user.name "Your user name"`
+
+`git config --global user.email "your@email.direction"`
+
+### 
