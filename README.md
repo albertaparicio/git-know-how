@@ -97,10 +97,10 @@ If you do not have one, you must first create an SSH key. Here are the steps:
         If you see a long string starting with ssh-rsa or ssh-dsa, you can skip the ssh-keygen step.
 2. Generate a new SSH key:
         `ssh-keygen -t rsa -C "your@email.direction"`
-        This command will prompt you for a location and filename to store the key pair and for a password. When prompted for the location and filename, you can press enter to use the default.
+        This command will prompt you for a location and filename to store the key pair and for a password. When prompted for the location and filename, you can press enter to use the default. Use the command below to show your public key. The location of the key may vary if you chose a different one from the default:
 
-        Use the command below to show your public key:
-        `cat ~/.ssh/id_rsa.pub` (the location of the key may vary if you chose a different one from the default)
+        `cat ~/.ssh/id_rsa.pub`
+
 3. Copy the SSH in the "SSH Keys" section of your profile's settings page. To copy the key to the clipboard, there is a differend command for every OS:
     - GNU/Linux (requires xclip):
     
