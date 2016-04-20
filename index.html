@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Git-know-how by albertaparicio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Git-know-how</h1>
+      <h2 class="project-tagline">Git KnowHow</h2>
+      <a href="https://github.com/albertaparicio/git-know-how" class="btn">View on GitHub</a>
+      <a href="https://github.com/albertaparicio/git-know-how/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/albertaparicio/git-know-how/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="git-know-how" class="anchor" href="#git-know-how" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Git Know-How</h1>
+
+<h2>
+<a id="git-initial-setup" class="anchor" href="#git-initial-setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Git initial setup</h2>
+
+<h3>
+<a id="setup-username-and-e-mail" class="anchor" href="#setup-username-and-e-mail" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup username and e-mail</h3>
+
+<p>To set your username and e-mail up, run these two commands in the Terminal, 
+inside the project's folder:</p>
+
+<p><code>git config --global user.name "Your user name"</code></p>
+
+<p><code>git config --global user.email "your@email.direction"</code></p>
+
+<h3>
+<a id="repository-initialization" class="anchor" href="#repository-initialization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Repository initialization</h3>
+
+<p>There are two possible ways to start a repository.</p>
+
+<h4>
+<a id="creating-a-local-repository-and-uploading-it-to-the-remote-server" class="anchor" href="#creating-a-local-repository-and-uploading-it-to-the-remote-server" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating a local repository and uploading it to the remote server</h4>
+
+<p>In this case, the initialization goes from local to remote.</p>
+
+<p><code>mkdir repo_folder</code></p>
+
+<p><code>cd repo_folder</code></p>
+
+<p><code>git init</code></p>
+
+<p><code>git remote add origin git@remote.server:server_username/project-name.git</code></p>
+
+<p>The remote direction can be obtained at the project's page at the remote server. This direction can be obtained to connect through <strong>HTTPS</strong> (Requires user and password at every <code>push</code> and <code>pull</code>) or through <strong>SSH</strong> (<em><strong>Recommended</strong></em> Does not require user and pass, but needs an SSH key to be created and uploaded)</p>
+
+<p><code>git add .</code></p>
+
+<p><code>git commit</code></p>
+
+<p><code>git push -u origin master</code></p>
+
+<p>This is the recommended command, although <code>git push</code> usually works well, too.</p>
+
+<h4>
+<a id="cloning-an-already-created-repository" class="anchor" href="#cloning-an-already-created-repository" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cloning an already created repository</h4>
+
+<p><code>git clone git@remote.server:server_username/project-name.git</code></p>
+
+<p><code>cd project_folder</code></p>
+
+<p><code>touch README.md</code></p>
+
+<p><code>git add README.md</code></p>
+
+<p>These two README.md commands are an example of making any changes in the project.</p>
+
+<p><code>git commit -m "add README"</code></p>
+
+<p>The commit message serves as a way to rapidly identify what has been changed in the project.</p>
+
+<p><code>git push -u origin master</code></p>
+
+<h2>
+<a id="git-workflow" class="anchor" href="#git-workflow" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Git workflow</h2>
+
+<p>The command <code>git status</code> can be used at any moment to check if there are commits to push, changes to commit, etc. The typical workflow using a Git repository is as follows:</p>
+
+<ol>
+<li>
+<code>git pull</code> in order to download anything new that has been done to the project.</li>
+<li>Work on the project.</li>
+<li>
+<code>git add files_to_commit</code>. All files that you want to be reflected on this commit must be added here. Not necessarily all changed files must be uploaded in a single commit.</li>
+<li>
+<p><code>git commit</code> or <code>git commit -m "commit_message</code>. The difference between them is that the first command opens a Terminal text editor (By default, <code>nano</code> in Linux, <code>vi</code> in Mac OS systems) and the second one gets the message written directly at the command-line.</p>
+
+<p>This default editor can be changed with <code>git config --global core.editor "chosen_editor"</code>.</p>
+</li>
+<li>If you want to continue working on the project, do so and <code>git commit</code> any other changes. If you have finished, now it is the time to <code>git push</code> all these new commits to the remote server.
+It is advisable to push all commits at once, so the remote server is less stressed.</li>
+</ol>
+
+<h3>
+<a id="pushing-and-pulling" class="anchor" href="#pushing-and-pulling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pushing and pulling</h3>
+
+<p>Remote Git servers like GitHub or GitLab allow two ways of connecting to them. One is via HTTPS, the other is SSH.</p>
+
+<p>The HTTPS method is the most simple to set up. It just asks for your server username and password, and sends the data through port 443 (HTTPS default). It is advisable if your connection does not allow you to use port 22 (SSH default).</p>
+
+<p>The SSH method requires a slightly more complex setup, but when pushing and pulling data, there is no user or pass to be input. It is not always available, as your connection may have blocked port 22. (Not usual in domestic connections)</p>
+
+<h4>
+<a id="setting-up-an-ssh-remote-url-for-your-connection" class="anchor" href="#setting-up-an-ssh-remote-url-for-your-connection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setting up an SSH remote URL for your connection</h4>
+
+<ol>
+<li>
+<p>First of all, the local repository must have an SSH remote direction set up.
+To obtain your project's SSH direction, check its main page, select the SSH option and copy it. Below there a screenshot of the Linux kernel's GitHub page, with the SSH URL location shown:</p>
+
+<p><img src="https://raw.githubusercontent.com/albertaparicio/first-project/master/linux_repo_SSH.png" alt="Linux GitHub SSH URL location" title="Linux kernel's GitHub page SSH URL"></p>
+</li>
+<li><p>Add the SSH URL to your local repository:
+    <code>git remote add [shortname] [url]</code>. When setting this URL for the first time, the <code>[shortname]</code> field is <code>origin</code>.</p></li>
+</ol>
+
+<h4>
+<a id="set-up-an-ssh-key" class="anchor" href="#set-up-an-ssh-key" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Set up an SSH key</h4>
+
+<p>An SSH key is the way the remote server has for checking the uploader's identity. To do so, first you have to link an SSH key of your computer/s with your remote server's account.</p>
+
+<p>If you do not have one, you must first create an SSH key. Here are the steps:</p>
+
+<ol>
+<li>First, check if your computer already has an SSH key:
+    <code>cat ~/.ssh/id_rsa.pub</code>
+    If you see a long string starting with ssh-rsa or ssh-dsa, you can skip the ssh-keygen step.</li>
+<li>
+<p>Generate a new SSH key:
+    <code>ssh-keygen -t rsa -C "your@email.direction"</code>
+    This command will prompt you for a location and filename to store the key pair and for a password. When prompted for the location and filename, you can press enter to use the default. Use the command below to show your public key. The location of the key may vary if you chose a different one from the default:</p>
+
+<pre><code>`cat ~/.ssh/id_rsa.pub`
+</code></pre>
+</li>
+<li>
+<p>Copy the SSH into the "SSH Keys" section of your profile's settings page. To copy the key to the clipboard, there is a differend command for every OS:</p>
+
+<ul>
+<li>
+<p>GNU/Linux (requires xclip):</p>
+
+<p><code>xclip -sel clip &lt; ~/.ssh/id_rsa.pub</code></p>
+</li>
+<li>
+<p>Mac OS:</p>
+
+<p><code>pbcopy &lt; ~/.ssh/id_rsa.pub</code></p>
+</li>
+<li>
+<p>Windows:</p>
+
+<p><code>clip &lt; ~/.ssh/id_rsa.pub</code></p>
+</li>
+</ul>
+</li>
+<li><p>The first time you connect to the server via SSH, you will be asked for the key's password. Enter it and after that, you will no longer need to input any credentials for your connections with the remote server.</p></li>
+</ol>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/albertaparicio/git-know-how">Git-know-how</a> is maintained by <a href="https://github.com/albertaparicio">albertaparicio</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
